@@ -222,7 +222,7 @@ struct ModalView: View {
             transaction.animation = .interpolatingSpring(stiffness: 222, damping: 28)
             
             withTransaction(transaction) {
-                modalOffset = (-defaultModalOffset + connectionWarningOffset) + abs(-defaultModalOffset + connectionWarningOffset) * newValue
+                modalOffset = (-defaultModalOffset) + abs(-defaultModalOffset) * newValue
                 modalScale = 0.92 + 0.08 * newValue
                 dismissButtonScale = 0.92 + (0.08 * newValue)
                 dismissButtonOpacity = newValue

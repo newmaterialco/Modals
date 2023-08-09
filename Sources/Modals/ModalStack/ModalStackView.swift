@@ -13,15 +13,8 @@ struct ModalStackView<Content: View>: View {
     
     var body: some View {
         ZStack {
-            ModalRootContainerView<Content>(content: content)
+            ModalStackContainerView<Content>(content: content)
             ModalSystemView()
         }
-    }
-}
-
-
-struct ModalStackView_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalStackView()
     }
 }

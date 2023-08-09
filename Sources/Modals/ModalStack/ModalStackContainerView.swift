@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import IdentifiedCollections
 
 struct ModalStackContainerView<Content: View>: View, Equatable {
     static func == (lhs: ModalStackContainerView, rhs: ModalStackContainerView) -> Bool {
