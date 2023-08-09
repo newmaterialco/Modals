@@ -31,6 +31,7 @@ struct ModalView: View {
     
     private let selectionGenerator = UISelectionFeedbackGenerator()
     private let indicatorHeight: CGFloat = 26
+    private let screenWidth: CGFloat
     private let screenHeight: CGFloat
     private let defaultHeight: CGFloat
     private let defaultOffset: CGFloat
@@ -41,6 +42,7 @@ struct ModalView: View {
         self.isTopModal = isTopModal
         self.modal = modal
         
+        self.screenWidth = UIApplication.shared.screenSize.width
         self.screenHeight = UIApplication.shared.screenSize.height
         self.defaultHeight = modal.size.value
         self.defaultOffset = screenHeight - modal.size.value
@@ -94,7 +96,7 @@ struct ModalView: View {
                         .zIndex(20)
                         VStack {
                             modal.view
-                                .frame(height: contentHeight)
+                                .frame(width: screenWidth, height: contentHeight)
                                 .offset(y: -44)
                             Spacer()
                         }
