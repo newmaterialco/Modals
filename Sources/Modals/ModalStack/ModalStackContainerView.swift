@@ -27,7 +27,7 @@ struct ModalStackContainerView<Content: View>: View, Equatable {
             Color.black.ignoresSafeArea()
             ZStack(alignment: .top) {
                 ZStack {
-                    Color.systemBackground
+                    Color.modalBackground
                         .saturation(contentSaturation)
                         .scaleEffect(contentScaleEffect, anchor: .center)
                         .offset(y: contentOffset)
