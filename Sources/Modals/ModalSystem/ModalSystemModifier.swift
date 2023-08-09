@@ -34,7 +34,7 @@ struct ModalSystemModifier<V: View>: ViewModifier {
     }
 }
 
-extension View {
+public extension View {
     func modal<V: View>(
         isPresented: Binding<Bool>,
         size: ModalSize = .large,
