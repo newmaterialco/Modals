@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum ModalSize {
+public enum ModalSize {
     case small
     case medium
     case large

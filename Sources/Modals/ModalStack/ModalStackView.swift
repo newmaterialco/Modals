@@ -11,6 +11,10 @@ public struct ModalStackView<Content: View>: View {
     
     var content: () -> Content
     
+    public init(content: @escaping () -> Content) {
+        self.content = content
+    }
+    
     public var body: some View {
         ZStack {
             ModalStackContainerView<Content>(content: content)

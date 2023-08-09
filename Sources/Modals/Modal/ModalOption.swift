@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ModalOption {
+public enum ModalOption {
     case prefersDragHandle
     case disableContentDragging
     case disableBackgroundScaling
