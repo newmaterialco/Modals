@@ -41,7 +41,7 @@ public extension View {
     /// Creates and optionally presents a modal on top of the view hierarchy
     /// - Parameters:
     ///   - isPresented: A Binding Bool that sets the presentation of the modal.
-    ///   - size: The size of the modal. The default value is `ModalSize.full`.
+    ///   - size: The size of the modal. The default value is `ModalSize.large`.
     ///   - cornerRadius: The corner radius of the modal. The default value is `36`.
     ///   - backgroundColor: The background color of the moda. The default is `Color.modalBackground`.
     ///   - options: An optional array of `ModalOption`'s that are applied to the modal.
