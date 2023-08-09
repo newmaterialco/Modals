@@ -21,6 +21,7 @@ public struct Modal: Identifiable, Hashable {
     @Binding var isPresented: Bool
     var size: ModalSize
     var cornerRadius: CGFloat
+    var backgroundColor: Color
     var options: [ModalOption]
     var view: AnyView
     
@@ -28,12 +29,14 @@ public struct Modal: Identifiable, Hashable {
         isPresented: Binding<Bool>,
         size: ModalSize,
         cornerRadius: CGFloat,
+        backgroundColor: Color,
         options: [ModalOption],
         view: AnyView
     ) {
         self._isPresented = isPresented
         self.size = size
         self.cornerRadius = cornerRadius
+        self.backgroundColor = backgroundColor
         self.options = options
         self.view = view
     }

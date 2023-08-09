@@ -8,10 +8,8 @@
 import Foundation
 import SwiftUI
 
-extension Color {
+public extension Color {
     static let systemBackground = Color(UIColor.systemBackground)
-    static let secondarySystemBackground = Color(UIColor.secondarySystemBackground)
-    static let tertiarySystemBackground = Color(UIColor.tertiarySystemBackground)
     
     static let modalBackground = Color(
         uiColor: UIColor(
