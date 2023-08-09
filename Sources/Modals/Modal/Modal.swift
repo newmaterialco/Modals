@@ -43,7 +43,7 @@ extension Modal {
     
     var isContentDraggable: Bool {
         for option in options {
-            if option == .disableBackgroundScaling {
+            if option == .disableContentDragging {
                 return false
             }
         }
@@ -57,14 +57,5 @@ extension Modal {
             }
         }
         return false
-    }
-    
-    var isBackgroundScalingEnabled: Bool {
-        for option in options {
-            if option == .disableBackgroundScaling {
-                return false
-            }
-        }
-        return true
     }
 }

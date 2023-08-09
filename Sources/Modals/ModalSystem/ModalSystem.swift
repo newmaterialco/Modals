@@ -17,5 +17,8 @@ class ModalSystem {
     
     var containerBackgroundColor: Color = Color.modalBackground
     var contentBackgroundColor: Color = Color.systemBackground
+    
+    var isContentScalingEnabled: Bool = true
+    var isContentSaturationEnabled: Bool = true
 }
 

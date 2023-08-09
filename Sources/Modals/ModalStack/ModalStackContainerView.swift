@@ -16,7 +16,6 @@ struct ModalStackContainerView<Content: View>: View, Equatable {
     var content: () -> Content
     
     @State var modalCount = 0
-    @State var isBackgroundScalingEnabled = true
     @State var contentSaturation: CGFloat = 1
     @State var contentScaleEffect: CGFloat = 1
     @State var contentCornerRadius: CGFloat = 36
@@ -63,31 +62,26 @@ struct ModalStackContainerView<Content: View>: View, Equatable {
     }
 
     func dragProgressDidChange(_ newValue: CGFloat) {
-        guard isBackgroundScalingEnabled, modalCount == 1 else { return }
+        guard modalCount == 1 else { return }
         
         var transaction = Transaction()
         transaction.isContinuous = true
         transaction.animation = .interpolatingSpring(stiffness: 222, damping: 28)
         
         withTransaction(transaction) {
-            contentSaturation = newValue
-            contentScaleEffect = 0.92 + (0.08 * newValue)
-            contentCornerRadius = 36 + (UIScreen.main.displayCornerRadius - 36) * newValue
-            contentOffset = 30 - (30 * newValue)
+            if ModalSystem.shared.isContentSaturationEnabled {
+                contentSaturation = newValue
+            }
+            
+            if ModalSystem.shared.isContentScalingEnabled {
+                contentScaleEffect = 0.92 + (0.08 * newValue)
+                contentCornerRadius = 36 + (UIScreen.main.displayCornerRadius - 36) * newValue
+                contentOffset = 30 - (30 * newValue)
+            }
         }
     }
     
     func modalsDidChange(_ newValue: IdentifiedArrayOf<Modal>) {
-        
-        if newValue.isEmpty {
-            isBackgroundScalingEnabled = true
-        } else {
-            for modal in newValue {
-                if !modal.isBackgroundScalingEnabled {
-                    isBackgroundScalingEnabled = false
-                }
-            }
-        }
         
         if modalCount == 0 && newValue.count == 1 {
             contentCornerRadius = UIScreen.main.displayCornerRadius
@@ -95,17 +89,22 @@ struct ModalStackContainerView<Content: View>: View, Equatable {
         
         modalCount = newValue.count
         
-        guard isBackgroundScalingEnabled, newValue.count != 2 else { return }
+        guard newValue.count < 2 else { return }
         
         var transaction = Transaction()
         transaction.isContinuous = true
         transaction.animation = .interpolatingSpring(stiffness: 222, damping: 28)
         
         withTransaction(transaction) {
-            contentSaturation = modalCount == 0 ? 1 : 0
-            contentScaleEffect = modalCount == 0 ? 1 : 0.92
-            contentCornerRadius = modalCount == 0 ? UIScreen.main.displayCornerRadius : 36
-            contentOffset = modalCount == 0 ? 0 : 30
+            if ModalSystem.shared.isContentSaturationEnabled {
+                contentSaturation = modalCount == 0 ? 1 : 0
+            }
+            
+            if ModalSystem.shared.isContentScalingEnabled {
+                contentScaleEffect = modalCount == 0 ? 1 : 0.92
+                contentCornerRadius = modalCount == 0 ? UIScreen.main.displayCornerRadius : 36
+                contentOffset = modalCount == 0 ? 0 : 30
+            }
         }
         
         if modalCount == 0 {

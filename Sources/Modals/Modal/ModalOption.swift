@@ -15,7 +15,4 @@ public enum ModalOption {
     
     /// Disables the ability to drag on content to dismiss the modal (sometimes useful when a ScrollView is embedded in the modal).
     case disableContentDragging
-    
-    /// Disables the scaling effect on the root content when a modal is presented.
-    case disableBackgroundScaling
 }
