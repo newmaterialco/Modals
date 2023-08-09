@@ -83,7 +83,7 @@ struct ModalStackContainerView<Content: View>: View, Equatable {
     
     func modalsDidChange(_ newValue: IdentifiedArrayOf<Modal>) {
         
-        if modalCount == 0 && newValue.count == 1 {
+        if modalCount == 0 && newValue.count == 1 && ModalSystem.shared.isContentScalingEnabled {
             contentCornerRadius = UIScreen.main.displayCornerRadius
         }
         
