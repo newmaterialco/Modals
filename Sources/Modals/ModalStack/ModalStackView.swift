@@ -22,3 +22,22 @@ public struct ModalStackView<Content: View>: View {
         }
     }
 }
+
+public extension ModalStackView {
+    
+    /// Sets the background color for the modal stack container
+    /// - Parameter color: The color to set
+    func containerBackgroundColor(_ color: Color) -> ModalStackView {
+        ModalSystem.shared.containerBackgroundColor = color
+        return self
+    }
+    
+    /// Sets the background color for the modal stack root content
+    /// - Parameter color: The color to set
+    func contentBackgroundColor(_ color: Color) -> ModalStackView {
+        ModalSystem.shared.contentBackgroundColor = color
+        return self
+    }
+}
+
+

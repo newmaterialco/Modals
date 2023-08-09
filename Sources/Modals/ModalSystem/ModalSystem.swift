@@ -14,5 +14,8 @@ class ModalSystem {
     
     @Published var modals: IdentifiedArrayOf<Modal> = []
     @Published var dragProgress: CGFloat = 0
+    
+    var containerBackgroundColor: Color = Color.modalBackground
+    var contentBackgroundColor: Color = Color.systemBackground
 }
 
