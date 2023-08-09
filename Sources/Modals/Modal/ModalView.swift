@@ -77,7 +77,7 @@ struct ModalView: View {
                         close()
                     }
                 ZStack(alignment: .bottom) {
-                    Color.tertiarySystemBackground
+                    modal.backgroundColor
                         .cornerRadius(modal.cornerRadius, corners: [.topLeft, .topRight])
                         .shadow(color: .black.opacity(0.12), radius: 24)
                         .frame(height: containerHeight)
