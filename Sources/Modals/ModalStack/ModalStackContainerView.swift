@@ -24,10 +24,10 @@ struct ModalStackContainerView<Content: View>: View, Equatable {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Color.black.ignoresSafeArea()
+            Color.modalBackground
             ZStack(alignment: .top) {
                 ZStack {
-                    Color.modalBackground
+                    Color.systemBackground
                         .saturation(contentSaturation)
                         .scaleEffect(contentScaleEffect, anchor: .center)
                         .offset(y: contentOffset)
