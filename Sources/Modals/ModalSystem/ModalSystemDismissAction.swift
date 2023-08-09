@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ModalSystemDismissAction {
+public struct ModalSystemDismissAction {
     private var action: () -> Void
     
     func callAsFunction() {
@@ -20,11 +20,13 @@ struct ModalSystemDismissAction {
     }
 }
 
-struct ModalSystemDismissActionKey: EnvironmentKey {
-    static var defaultValue: ModalSystemDismissAction = ModalSystemDismissAction()
+public struct ModalSystemDismissActionKey: EnvironmentKey {
+    public static var defaultValue: ModalSystemDismissAction = ModalSystemDismissAction()
 }
 
-extension EnvironmentValues {
+public extension EnvironmentValues {
+    
+    /// A closure that dismisses the top most presented modal when called.
     var dismissModal: ModalSystemDismissAction {
         get { self[ModalSystemDismissActionKey.self] }
         set { self[ModalSystemDismissActionKey.self] = newValue }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// The underlying view wrapper that handles presenting modals as global overlays
 public struct ModalStackView<Content: View>: View {
     
     var content: () -> Content

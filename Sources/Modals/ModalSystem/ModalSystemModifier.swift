@@ -35,6 +35,14 @@ struct ModalSystemModifier<V: View>: ViewModifier {
 }
 
 public extension View {
+    
+    /// Creates and optionally presents a modal on top of the view hierarchy
+    /// - Parameters:
+    ///   - isPresented: A Binding Bool that sets the presentation of the modal.
+    ///   - size: The size of the modal. The default value is `ModalSize.full`.
+    ///   - cornerRadius: The corner radius of the modal. The default value is `36`.
+    ///   - options: An optional array of `ModalOption`'s that are applied to the modal.
+    ///   - view: The content to be embedded in the modal.
     func modal<V: View>(
         isPresented: Binding<Bool>,
         size: ModalSize = .large,

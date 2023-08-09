@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// A series of sizes that can be passed into the .modal() modifier to adjust the size of the presented modal (inspired by system sheet presentation detents).
 public enum ModalSize {
     case small
     case medium
