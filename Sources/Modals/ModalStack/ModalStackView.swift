@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct ModalStackView<Content: View>: View {
+public struct ModalStackView<Content: View>: View {
     
     var content: () -> Content
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             ModalStackContainerView<Content>(content: content)
             ModalSystemView()
