@@ -79,7 +79,7 @@ struct ModalView: View {
                 ZStack(alignment: .bottom) {
                     Color.tertiarySystemBackground
                         .cornerRadius(modal.cornerRadius, corners: [.topLeft, .topRight])
-                        .shadow(color: .primary.opacity(0.12), radius: 24)
+                        .shadow(color: .black.opacity(0.12), radius: 24)
                         .frame(height: containerHeight)
                         .offset(y: containerOffset)
                         .zIndex(0)

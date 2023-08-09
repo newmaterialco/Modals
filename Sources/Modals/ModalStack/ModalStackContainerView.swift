@@ -24,7 +24,7 @@ struct ModalStackContainerView<Content: View>: View, Equatable {
     
     var body: some View {
         ZStack(alignment: .top) {
-            Color.modalBackground
+            Color.modalBackground.ignoresSafeArea()
             ZStack(alignment: .top) {
                 ZStack {
                     Color.systemBackground
