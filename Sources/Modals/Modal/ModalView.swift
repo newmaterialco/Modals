@@ -273,7 +273,7 @@ struct ModalView: View {
     func open() {
         var transaction = Transaction()
         transaction.isContinuous = true
-        transaction.animation = .interpolatingSpring(stiffness: 222, damping: 28)
+        transaction.animation = ModalSystem.shared.openAnimation
         
         withTransaction(transaction) {
             contentOffset = defaultOffset
@@ -283,20 +283,32 @@ struct ModalView: View {
     }
     
     func close() {
-        var transaction = Transaction()
-        transaction.isContinuous = true
-        transaction.animation = .interpolatingSpring(stiffness: 222, damping: 28)
-        
-        withTransaction(transaction) {
-            contentOffset = screenHeight
-            contentHeight = defaultHeight - indicatorHeight
-            containerOffset = defaultHeight
-            containerHeight = defaultHeight
-        }
-        
         self.modal.isPresented = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            ModalSystem.shared.modals.remove(id: self.modal.id)
+        
+        if #available(iOS 17, *) {
+            withAnimation(ModalSystem.shared.closeAnimation, completionCriteria: .removed) {
+                contentOffset = screenHeight
+                contentHeight = defaultHeight - indicatorHeight
+                containerOffset = defaultHeight
+                containerHeight = defaultHeight
+            } completion: {
+                ModalSystem.shared.modals.remove(id: self.modal.id)
+            }
+        } else {
+            var transaction = Transaction()
+            transaction.isContinuous = true
+            transaction.animation = ModalSystem.shared.closeAnimation
+            
+            withTransaction(transaction) {
+                contentOffset = screenHeight
+                contentHeight = defaultHeight - indicatorHeight
+                containerOffset = defaultHeight
+                containerHeight = defaultHeight
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                ModalSystem.shared.modals.remove(id: self.modal.id)
+            }
         }
     }
 }

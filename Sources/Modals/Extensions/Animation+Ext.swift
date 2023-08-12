@@ -9,4 +9,5 @@ import SwiftUI
 
 public extension Animation {
     static let stiffSpring = Animation.spring(response: 0.2, dampingFraction: 0.9)
+    static let presentationSpring = Animation.interpolatingSpring(stiffness: 222, damping: 28)
 }
