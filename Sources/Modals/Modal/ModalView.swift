@@ -22,6 +22,7 @@ struct ModalView: View {
     @State private var contentOffset: CGFloat
     @State private var contentHeight: CGFloat
     @State private var isModalOverlayed: Bool = false
+    @State private var isAnimatingClose: Bool = false
     
     @State var modalScale: CGFloat = 1.0
     @State var modalOffset: CGFloat = 0
@@ -171,6 +172,7 @@ struct ModalView: View {
                     dragProgressDidChange(output)
                 })
             }
+            .disabled(isAnimatingClose)
         }
     }
     
@@ -286,12 +288,14 @@ struct ModalView: View {
         self.modal.isPresented = false
         
         if #available(iOS 17, *) {
+            isAnimatingClose = true
             withAnimation(ModalSystem.shared.closeAnimation, completionCriteria: .removed) {
                 contentOffset = screenHeight
                 contentHeight = defaultHeight - indicatorHeight
                 containerOffset = defaultHeight
                 containerHeight = defaultHeight
             } completion: {
+                isAnimatingClose = false
                 ModalSystem.shared.modals.remove(id: self.modal.id)
             }
         } else {
