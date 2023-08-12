@@ -93,7 +93,7 @@ struct ModalStackContainerView<Content: View>: View, Equatable {
         
         var transaction = Transaction()
         transaction.isContinuous = true
-        transaction.animation = .interpolatingSpring(stiffness: 222, damping: 28)
+        transaction.animation = modalCount == 0 ? ModalSystem.shared.closeAnimation : ModalSystem.shared.openAnimation
         
         withTransaction(transaction) {
             if ModalSystem.shared.isContentSaturationEnabled {
