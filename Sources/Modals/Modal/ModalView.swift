@@ -275,7 +275,7 @@ struct ModalView: View {
     func open() {
         var transaction = Transaction()
         transaction.isContinuous = true
-        transaction.animation = ModalSystem.shared.openAnimation
+        transaction.animation = Animation.presentationSpring
         
         withTransaction(transaction) {
             contentOffset = defaultOffset
@@ -287,32 +287,19 @@ struct ModalView: View {
     func close() {
         self.modal.isPresented = false
         
-        if #available(iOS 17, *) {
-            isAnimatingClose = true
-            withAnimation(ModalSystem.shared.closeAnimation, completionCriteria: .removed) {
-                contentOffset = screenHeight
-                contentHeight = defaultHeight - indicatorHeight
-                containerOffset = defaultHeight
-                containerHeight = defaultHeight
-            } completion: {
-                isAnimatingClose = false
-                ModalSystem.shared.modals.remove(id: self.modal.id)
-            }
-        } else {
-            var transaction = Transaction()
-            transaction.isContinuous = true
-            transaction.animation = ModalSystem.shared.closeAnimation
-            
-            withTransaction(transaction) {
-                contentOffset = screenHeight
-                contentHeight = defaultHeight - indicatorHeight
-                containerOffset = defaultHeight
-                containerHeight = defaultHeight
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                ModalSystem.shared.modals.remove(id: self.modal.id)
-            }
+        var transaction = Transaction()
+        transaction.isContinuous = true
+        transaction.animation = Animation.presentationSpring
+        
+        withTransaction(transaction) {
+            contentOffset = screenHeight
+            contentHeight = defaultHeight - indicatorHeight
+            containerOffset = defaultHeight
+            containerHeight = defaultHeight
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            ModalSystem.shared.modals.remove(id: self.modal.id)
         }
     }
 }

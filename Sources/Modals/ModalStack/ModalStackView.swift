@@ -53,21 +53,4 @@ public extension ModalStackView {
         ModalSystem.shared.isContentSaturationEnabled = enabled
         return self
     }
-    
-    
-    /// Sets the animation used for the provided modal system presentations.
-    /// - Parameters:
-    ///   - presentations: The array of `ModalSystemPresentation` to adjust the animation for.
-    ///   - animation: The animation to be used for the provided modal system presentations.
-    func presentationAnimation(_ presentations: [ModalSystemPresentation], animation: Animation) -> ModalStackView {
-        for presentation in presentations {
-            switch presentation {
-            case .close:
-                ModalSystem.shared.closeAnimation = animation
-            case .open:
-                ModalSystem.shared.openAnimation = animation
-            }
-        }
-        return self
-    }
 }

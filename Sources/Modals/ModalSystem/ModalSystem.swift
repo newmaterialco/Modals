@@ -20,7 +20,4 @@ class ModalSystem {
     
     var isContentScalingEnabled: Bool = true
     var isContentSaturationEnabled: Bool = true
-    
-    var openAnimation: Animation = .presentationSpring
-    var closeAnimation: Animation = .presentationSpring
 }
