@@ -11,7 +11,7 @@ import SwiftUI
 public struct ModalSystemDismissAction {
     private var action: () -> Void
     
-    func callAsFunction() {
+    public func callAsFunction() {
         action()
     }
     
