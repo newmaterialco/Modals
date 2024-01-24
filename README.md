@@ -53,6 +53,23 @@ struct ContentView: View {
 }
 ```
 
+### Dismiss Action
+
+To dismiss a modal programmatically from within a modal, use the `dismissAction` environment value.
+
+```swift
+struct ModalContentView: View {
+
+    @Environment(\.dismissModal) var dismissModal
+    
+    var body: some View {
+        Button("Dismiss this modal!") {
+            dismissModal()
+        }
+    }
+}
+```
+
 # Advanced Usage
 
 ## Modal Customization
