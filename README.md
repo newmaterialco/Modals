@@ -11,7 +11,7 @@ You can add Modals to your project using Swift Package Manager.
 -   Enter the repo URL
 
 ```
-http://github.com/fieldday-ai/Modals.git
+http://github.com/newmaterialco/Modals.git
 ```
 
 # Set Up
